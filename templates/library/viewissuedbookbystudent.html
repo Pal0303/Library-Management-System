@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Books Issued To You</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css">
+  <!-- Font Awesome CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    body {
+      background-color: #f8f9fa;
+      font-family: 'Roboto', sans-serif;
+    }
+
+    .page-title {
+      background-color: #007bff;
+      color: #fff;
+      padding: 30px 20px;
+      text-align: center;
+      border-radius: 10px;
+      margin-bottom: 30px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .page-title h3 {
+      margin: 0;
+      font-size: 36px;
+    }
+
+    .redTable {
+      border: 2px solid #A40808;
+      background-color: #fff;
+      width: 100%;
+      text-align: center;
+      border-collapse: collapse;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .redTable thead {
+      background: #A40808;
+      color: #fff;
+    }
+
+    .redTable thead th {
+      padding: 15px;
+      font-size: 16px;
+      font-weight: bold;
+    }
+
+    .redTable tbody td {
+      padding: 12px;
+      font-size: 14px;
+      color: #333;
+    }
+
+    .redTable tbody tr:nth-child(even) {
+      background: #F5C8BF;
+    }
+
+    .redTable tbody tr:nth-child(odd) {
+      background: #FCEBE4;
+    }
+
+    .redTable tfoot {
+      background: #A40808;
+      color: #fff;
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    .redTable tfoot td {
+      padding: 10px;
+    }
+
+    .redTable .btn {
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      transition: background-color 0.3s ease;
+    }
+
+    .redTable .btn:hover {
+      background-color: #0056b3;
+    }
+
+    .no-books {
+      text-align: center;
+      padding: 20px;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      color: #333;
+    }
+
+    .no-books h1 {
+      font-size: 24px;
+      color: #A40808;
+    }
+
+    .btn-primary {
+      background-color: #A40808;
+      border-color: #A40808;
+    }
+
+    .btn-primary:hover {
+      background-color: #9e0707;
+      border-color: #9e0707;
+    }
+
+    /* Responsive design */
+    @media (max-width: 768px) {
+      .table-container {
+        display: block;
+        margin-bottom: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  {% include "library/navbarstudent.html" %}
+
+  <div class="container my-5">
+    <div class="page-title">
+      <h3>Books Issued To You!</h3>
+    </div>
+
+    <div class="row">
+      <!-- First Table: Book Details -->
+      <div class="col-lg-6 mb-4 table-container">
+        {% if li1 %}
+        <table class="redTable">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Enrollment</th>
+              <th>Branch</th>
+              <th>Book Name</th>
+              <th>Book Author</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for t in li1 %}
+            <tr>
+              <td>{{ t.0 }}</td>
+              <td>{{ t.1 }}</td>
+              <td>{{ t.2 }}</td>
+              <td>{{ t.3 }}</td>
+              <td>{{ t.4 }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+        {% else %}
+        <div class="no-books">
+          <h1>No Book Issued To You</h1>
+        </div>
+        {% endif %}
+      </div>
+
+      <!-- Second Table: Issue Details -->
+      <div class="col-lg-6 mb-4 table-container">
+        {% if li2 %}
+        <table class="redTable">
+          <thead>
+            <tr>
+              <th>Issue Date</th>
+              <th>Expiry Date</th>
+              <th>Fine</th>
+              <th>Status</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for t in li2 %}
+            <tr>
+              <td>{{ t.0 }}</td>
+              <td>{{ t.1 }}</td>
+              <td>
+                {% if t.3 == "Returned" %}
+                  No Fine
+                {% else %}
+                  {{ t.2 }}
+                {% endif %}
+              </td>
+              <td>{{ t.3 }}</td>
+              <td>
+                {% if t.3 == "Issued" %}
+                <a href="{% url 'returnbook' t.4 %}" class="btn btn-primary">Return</a>
+                {% endif %}
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+  {% include "library/footer.html" %}
+
+  <!-- Bootstrap JS, Popper.js, and jQuery -->
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.min.js"></script>
+</body>
+</html>

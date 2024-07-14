@@ -1,0 +1,67 @@
+<!-- library/templates/library/profile.html -->
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <style>
+        .profile-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f9f9f9;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .profile-photo {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .profile-photo img {
+            border-radius: 50%;
+            max-width: 150px;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    {% include "library/navbarstudent.html" %}
+    <div class="profile-container">
+        <h2 class="text-center">Edit Profile</h2>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="profile-photo">
+                {% if user.profile.profile_photo %}
+                    <img src="{{ user.profile.profile_photo.url }}" alt="Profile Photo">
+                {% else %}
+                    <img src="{% static 'default_profile_photo.jpg' %}" alt="Default Profile Photo">
+                {% endif %}
+            </div>
+            <div class="form-group">
+                {{ user_form.first_name.label_tag }}
+                {{ user_form.first_name }}
+            </div>
+            <div class="form-group">
+                {{ user_form.last_name.label_tag }}
+                {{ user_form.last_name }}
+            </div>
+            <div class="form-group">
+                {{ user_form.email.label_tag }}
+                {{ user_form.email }}
+            </div>
+            <div class="form-group">
+                {{ profile_form.profile_photo.label_tag }}
+                {{ profile_form.profile_photo }}
+            </div>
+            <div class="form-group">
+                {{ profile_form.bio.label_tag }}
+                {{ profile_form.bio }}
+            </div>
+            <div class="form-group">
+                {{ profile_form.location.label_tag }}
+                {{ profile_form.location }}
+            </div>
+            <button type="submit" class="btn btn-primary">Save Changes</button>
+        </form>
+    </div>
+    {% include "library/footer.html" %}
+</body>
+</html>
