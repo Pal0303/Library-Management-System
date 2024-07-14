@@ -1,122 +1,20 @@
+<!-- library/templates/library/recommended_books.html -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recommended Books</title>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f9f9f9;
-        }
-
-        .container-custom {
-            background-color: #ffffff;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-            border-radius: 8px;
-        }
-
-        .search-bar {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 20px;
-        }
-
-        .search-bar input {
-            width: 70%;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-        }
-
-        .search-bar button {
-            background-color: #42a5f5;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            margin-left: 10px;
-        }
-
-        .book-item {
-            background: #fff;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            padding: 10px;
-            margin-bottom: 20px;
-        }
-
-        .book-item img {
-            width: 100px;
-            height: 150px;
-            object-fit: cover;
-            margin-right: 15px;
-        }
-
-        .book-item h5 a {
-            text-decoration: none;
-            color: #42a5f5;
-        }
-
-        .book-item h5 a:hover {
-            text-decoration: underline;
-        }
-
-        .book-item p {
-            margin: 0;
-        }
-
-        .book-item .badge {
-            margin-top: 10px;
-        }
-
-        .pagination {
-            justify-content: center;
-        }
-    </style>
 </head>
 <body>
-    <div class="container mt-5 container-custom">
-        <div class="alert alert-info" role="alert">
-            No books available for your search term. Here are some recommended books for you!
-        </div>
-
-        <div class="search-bar">
-            <input type="text" class="form-control" placeholder="Search for more books...">
-            <button class="btn btn-primary">Search</button>
-        </div>
-
+    <h1>Recommended Books for {{ user.username }}</h1>
+    <ul>
         {% for book in recommended_books %}
-        <div class="book-item">
-            <div class="row">
-                <div class="col-md-2">
-                    <img src="{{ book.image_url }}" class="img-fluid" alt="{{ book.title }}">
-                </div>
-                <div class="col-md-10">
-                    <h5><a href="desc.html">{{ book.title }}</a></h5>
-                    <p>by {{ book.author }}</p>
-                    <p>Publication Date: {{ book.publication_date }}</p>
-                    <p>{{ book.description }}</p>
-                </div>
-            </div>
-        </div>
+            <li>{{ book.title }} by {{ book.author }}</li>
+        {% empty %}
+            <li>No books recommended</li>
         {% endfor %}
-
-        <nav>
-            <ul class="pagination">
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item"><a class="page-link" href="#">Next</a></li>
-            </ul>
-        </nav>
-    </div>
-
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    </ul>
 </body>
 </html>

@@ -1,7 +1,13 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
+  
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Library Management System</title>
+      <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 <style media="screen">
+
 .btn-circle.btn-xl {
   width: 70px;
   height: 70px;
@@ -28,28 +34,221 @@
 .jumbotron h1{
   text-align: center;
 }
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
+}
 
+.container-custom {
+  background-color: #ffffff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  border-radius: 8px;
+}
 
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #e0e0e0;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+
+header h1 {
+  font-size: 24px;
+}
+
+.login-button {
+  background-color: #f06292;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.search-section {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.search-section input {
+  width: 70%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.search-button {
+  background-color: #42a5f5;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+h2 {
+  border-bottom: 2px solid #42a5f5;
+  padding-bottom: 5px;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+li img {
+  width: 50px;
+  height: 75px;
+  margin-right: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+li div {
+  display: flex;
+  flex-direction: column;
+}
+
+li b {
+  display: block;
+}
+
+li p {
+  margin: 0;
+  color: #757575;
+}
+.login-button a{
+  color:white !important;
+}
 </style>
-  </head>
-  <body>
-    {% include "library/navbarstudent.html" %}
-    <br>
-    <br>
-    <center><h3 style=" margin-bottom: 0px;"class = 'alert alert-success'>Welcome to Online library !</h3></center>
-    <div class="jumbotron"   style="    margin-bottom: 0px;">
-    <h1 class="display-4">Hello {{user.first_name}} !</h1>
-    <p class="lead">As you are Student, you can see how many book you have taken from library with fine and many more ...!
-    </p>
-    <hr class="my-4">
-    <p>Option Available For You</p>
-    <div class="options" style="text-align:center">
-      <a href="viewissuedbookbystudent" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">View issued book to you</a><br><br>
-        </div>
-
-    </div>
+</head>
+<body>
+  {% include "library/navbarstudent.html" %}
+  <br>
+  <br>
+  <center><h3 style=" margin-bottom: 0px;"class = 'alert alert-success'>Welcome to Online library !</h3></center>
+  <div class="jumbotron"   style="    margin-bottom: 0px;">
+  <h1 class="display-4">Hello {{user.first_name}} !</h1>
+  
 
 
-    {% include "library/footer.html" %}
-  </body>
+ 
+<div class="container mt-5 container-custom">
+<header>
+  <h1>Public Library</h1>
+  <button class="btn btn-pink login-button"> <a href="login.html">Login</a></button>
+</header>
+
+<div class="search-section">
+  <input type="text" class="form-control" placeholder="Search the books available in Library">
+  <button class="btn btn-primary search-button">Search</button>
+</div>
+
+<div class="row">
+  <div class="col-md-6 mb-4">
+      <h2>New Arrivals</h2>
+      <ul class="list-unstyled">
+          <li class="media">
+              <img src="https://picsum.photos/50/75?random=1" class="mr-3" alt="The Creative Act">
+              <div class="media-body">
+                 <a href="desc.html"><h5 class="mt-0 mb-1">The Creative Act</h5></a> 
+                  <p>by Rick Rubin</p>
+                  <p>Publication Date: Jan 2023</p>
+              </div>
+          </li>
+          <li class="media">
+              <img src="https://picsum.photos/50/75?random=2" class="mr-3" alt="The House of Eve">
+              <div class="media-body">
+                <a href="desc.html">  <h5 class="mt-0 mb-1">The House of Eve</h5></a>
+                  <p>by Sadeqa Johnson</p>
+                  <p>Publication Date: Feb 2023</p>
+              </div>
+          </li>
+          <li class="media">
+              <img src="https://picsum.photos/50/75?random=3" class="mr-3" alt="Poverty, by America">
+              <div class="media-body">
+               <a href="desc.html">  <h5 class="mt-0 mb-1">Poverty, by America</h5></a> 
+                  <p>by Matthew Desmond</p>
+                  <p>Publication Date: Mar 2023</p>
+              </div>
+          </li>
+          <li class="media">
+              <img src="https://picsum.photos/50/75?random=4" class="mr-3" alt="A Man of Two Faces">
+              <div class="media-body">
+               <a href="desc.html"><h5 class="mt-0 mb-1">A Man of Two Faces</h5></a>
+                  <p>by Viet Thanh Nguyen</p>
+                  <p>Publication Date: Oct 2023</p>
+              </div>
+          </li>
+          <li class="media">
+              <img src="https://picsum.photos/50/75?random=5" class="mr-3" alt="The Longmire Defense">
+              <div class="media-body">
+                 <a href="desc.html"> <h5 class="mt-0 mb-1">The Longmire Defense</h5></a>
+                  <p>by Craig Johnson</p>
+                  <p>Publication Date: Sep 2023</p>
+              </div>
+          </li>
+      </ul>
+  </div>
+  <div class="col-md-6">
+      <h2>Trending</h2>
+      <ul class="list-unstyled">
+          <li class="media">
+              <img src="https://picsum.photos/50/75?random=6" class="mr-3" alt="Build It: The Rebel Playbook for Employee Engagement">
+              <div class="media-body">
+               <a href="desc.html">  <h5 class="mt-0 mb-1">Build It: The Rebel Playbook for Employee Engagement</h5></a> 
+                  <p>by Glenn Elliott</p>
+              </div>
+          </li>
+          <li class="media">
+              <img src="https://picsum.photos/50/75?random=7" class="mr-3" alt="Drive">
+              <div class="media-body">
+              <a href="desc.html">    <h5 class="mt-0 mb-1">Drive</h5></a>
+                  <p>by Daniel H. Pink</p>
+              </div>
+          </li>
+          <li class="media">
+              <img src="https://picsum.photos/50/75?random=8" class="mr-3" alt="Outliers: The Story of Success">
+              <div class="media-body">
+                 <a href="desc.html"> <h5 class="mt-0 mb-1">Outliers: The Story of Success</h5></a>
+                  <p>by Malcolm Gladwell</p>
+              </div>
+          </li>
+          <li class="media">
+              <img src="https://picsum.photos/50/75?random=9" class="mr-3" alt="The Lean Startup">
+              <div class="media-body">
+                <a href="desc.html"><h5 class="mt-0 mb-1">The Lean Startup</h5></a>  
+                  <p>by Eric Ries</p>
+              </div>
+          </li>
+          <li class="media">
+              <img src="https://picsum.photos/50/75?random=10" class="mr-3" alt="The 7 Habits of Highly Effective People">
+              <div class="media-body">
+             <a href="desc.html">     <h5 class="mt-0 mb-1">The 7 Habits of Highly Effective People</h5></a>
+                  <p>by Stephen R. Covey</p>
+              </div>
+          </li>
+      </ul>
+  </div>
+</div>
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
 </html>
+{% include "library/footer.html" %}
+
+
+

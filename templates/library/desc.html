@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Home Page</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="page-header">
+            <h1>Public Library</h1>
+            <button class="btn btn-success"><i class="fas fa-sign-out-alt"></i> Logout</button>
+        </div>
+
+        <div class="row">
+            <div class="col-md-8">
+                <div class="search-books search-display">
+                    <form method="GET" action="{% url 'search_books' %}">
+                        <input type="text" name="query" class="form-control search-box" placeholder="Search Books">
+                        <button type="submit" class="btn btn-primary mt-2 search-btn">
+                            <i class="fas fa-search search-icon"></i> Search
+                        </button>
+                    </form>
+                </div>
+
+                <h3>Search Results</h3>
+                <div id="search-results">
+                    {% if search_results %}
+                        {% for book in search_results %}
+                            <div class="book-item">
+                                <img src="{{ book.volumeInfo.imageLinks.thumbnail }}" alt="Book Cover">
+                                <div>
+                                    <h5>{{ book.volumeInfo.title }}</h5>
+                                    <p>{{ book.volumeInfo.description }}</p>
+                                    <div>
+                                        <a href="https://drive.google.com/file/d/1Tz-XwpBQxHJGro7ZiwAA6ny_65en1gZF/view?usp=sharing" class="btn btn-warning" target="_blank">
+                                            <i class="fas fa-book-reader"></i> Read Now
+                                        </a>
+                                    </div>
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        <p>No search results found.</p>
+                    {% endif %}
+                </div>
+
+                <h3>My Books</h3>
+                <!-- Your existing My Books section here -->
+            </div>
+
+            <div class="col-md-4 user-profile">
+                <h3>User Profile <i class="fas fa-user"></i></h3>
+                <div>
+                    <img src="https://via.placeholder.com/100" alt="User Avatar" class="img-thumbnail" style="width: 100px; height: 100px;">
+                    <h5>Michael Adams</h5>
+                    <p><i class="fas fa-user-shield"></i> Role: Admin</p>
+                    <p><i class="fas fa-calendar-alt"></i> Joined: Jan 1, 2020</p>
+                    <h6>Your contact</h6>
+                    <p><i class="fas fa-envelope"></i> Email: michael.adams@example.com</p>
+                    <p><i class="fas fa-phone"></i> Phone: 123-456-7890</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

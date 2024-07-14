@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title></title>
+    <title>Library Management</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -108,12 +108,13 @@
 <center><h3 style=" margin-bottom: 0px;"class = 'alert alert-success'>Login As Student!</h3></center>
     <div class="signup-form">
         <form  method="post" class="form-horizontal">
+
     			<center><h2>Student Login</h2></center>
 
 {% csrf_token %}
             {% for field in form %}
             <div class="form-group">
-              <label class="control-label col-xs-4">{{ field.label_tag }}</label>
+              <label class="control-label col-xs-4" style="width:90%;">{{ field.label_tag }}</label>
               <div class="col-xs-8">
               {{ field }}
                </div>

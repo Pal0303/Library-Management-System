@@ -1,153 +1,41 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/3.3.2/tailwind.min.css">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
+{% load static %}
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-        body {
-            font-family: 'Inter', sans-serif;
-            background: linear-gradient(120deg, #fbc2eb, #a6c0fe);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            margin: 0;
-            animation: gradientBG 5s infinite alternate;
-        }
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
-        @keyframes gradientBG {
-            0% { background: linear-gradient(120deg, #fbc2eb, #a6c0fe); }
-            100% { background: linear-gradient(120deg, #a6c0fe, #fbc2eb); }
-        }
 
-        .card {
-            background: rgba(255, 255, 255, 0.8);
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            padding: 2rem;
-            width: 100%;
-            max-width: 600px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            backdrop-filter: blur(10px);
-        }
+    <title>LazyCoder || sumit</title>
 
-        .card:hover {
-            transform: scale(1.05);
-            box-shadow: 0 15px 45px rgba(0,0,0,0.3);
-        }
 
-        .card h1 {
-            color: #333;
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
-            font-weight: 800;
-        }
+  </head>
+  <body>
 
-        .card p {
-            color: #555;
-            margin-bottom: 1.5rem;
-        }
+    {% include "library/navbar.html" %}
+<br><br>
 
-        .card input, .card textarea {
-            background: rgba(255, 255, 255, 0.7);
-            border: 1px solid #ced4da;
-            padding: 1rem;
-            border-radius: 10px;
-            box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
-            transition: border-color 0.3s ease, box-shadow 0.3s ease;
-            width: 100%;
-        }
+<center>
+        <h3 class = 'alert alert-success'>Send Us Your Valuable Feedback !</h3>
 
-        .card input:focus, .card textarea:focus {
-            border-color: #6c5ce7;
-            box-shadow: 0 0 0 3px rgba(108, 92, 231, 0.2);
-            outline: none;
-        }
-
-        .card button {
-            background: linear-gradient(45deg, #6c5ce7, #9a68d4);
-            color: #fff;
-            border: none;
-            padding: 1rem;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-            cursor: pointer;
-            transition: background 0.3s ease, box-shadow 0.3s ease;
-            width: 100%;
-            font-weight: 600;
-        }
-
-        .card button:hover {
-            background: linear-gradient(45deg, #5a4fbf, #8468a8);
-            box-shadow: 0 8px 16px rgba(0,0,0,0.3);
-        }
-
-        .card .result {
-            color: #28a745;
-            font-weight: bold;
-            margin-top: 1rem;
-            text-align: center;
-        }
-    </style>
-</head>
-<body>
-    <div class="card">
-        <div class="text-center">
-            <h1 class="my-3">Contact Us</h1>
-            <p>Fill up the form below to send us a message.</p>
-        </div>
-        <div class="m-7">
-            <form action="https://api.web3forms.com/submit" method="POST" id="form">
-                <input type="hidden" name="access_key" value="501eb002-9e84-4864-b8c8-d364dfb1a036" />
-                <input type="hidden" name="subject" value="New Submission from Web3Forms" />
-                <input type="checkbox" name="botcheck" id="" style="display: none;" />
-
-                <div class="mb-6">
-                    <label for="name" class="block mb-2 text-sm text-gray-600 dark:text-gray-400">Full Name</label>
-                    <input type="text" name="name" id="name" placeholder="John Doe" required />
+    <form method="POST">
+        <!-- Very Important csrf Token -->
+        {% csrf_token %}
+        <div class = "form-group">
+            <p>
+            <h3>{{ form.as_p }}</h3>
+        </p>
+            <br>
+            <input type="submit" value="Send Message" class = 'btn btn-primary btn-lg'>
                 </div>
-                <div class="mb-6">
-                    <label for="email" class="block mb-2 text-sm text-gray-600 dark:text-gray-400">Email Address</label>
-                    <input type="email" name="email" id="email" placeholder="you@company.com" required />
-                </div>
-                <div class="mb-6">
-                    <label for="phone" class="text-sm text-gray-600 dark:text-gray-400">Phone Number</label>
-                    <input type="text" name="phone" id="phone" placeholder="+1 (555) 1234-567" required />
-                </div>
-                <div class="mb-6">
-                    <label for="message" class="block mb-2 text-sm text-gray-600 dark:text-gray-400">Your Message</label>
-                    <textarea rows="5" name="message" id="message" placeholder="Your Message" required></textarea>
-                </div>
-                <div class="mb-6">
-                    <button type="submit">Send Message</button>
-                </div>
-                <p class="result" id="result"></p>
             </form>
-        </div>
-    </div>
-
-    <script>
-        document.getElementById('form').addEventListener('submit', function(event) {
-            event.preventDefault(); // Prevent form from submitting
-            const form = event.target;
-            fetch(form.action, {
-                method: form.method,
-                body: new FormData(form)
-            })
-            .then(response => response.json())
-            .then(data => {
-                document.getElementById('result').textContent = 'Your message has been sent successfully!';
-                form.reset();
-            })
-            .catch(error => {
-                document.getElementById('result').textContent = 'There was an error sending your message.';
-            });
-        });
-    </script>
-</body>
+        </center>
+    {% include "library/footer.html" %}
+  </body>
 </html>

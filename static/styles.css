@@ -1,0 +1,279 @@
+
+
+
+/* login page starts */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+}
+
+.container-custom {
+    background-color: #ffffff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #e0e0e0;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+header h1 {
+    font-size: 24px;
+}
+
+.login-button {
+    background-color: #f06292;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+form {
+    display: flex;
+
+    flex-direction: column;
+}
+
+input[type="text"], input[type="password"] {
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.submit-button {
+    background-color: #42a5f5;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 10px 0;
+}
+
+.signup-options {
+    margin-top: 20px;
+}
+
+.signup-options a {
+    color: #42a5f5;
+    text-decoration: none;
+    display: block;
+    margin: 5px 0;
+}
+
+
+
+.form-working{
+    width: 500px;
+text-align: center;
+}
+/* login page ends */
+
+
+
+
+
+/* index page css starts */
+.container-custom {
+    background-color: #ffffff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    border-radius: 8px;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #e0e0e0;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+header h1 {
+    font-size: 24px;
+}
+
+.login-button {
+    background-color: #f06292;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.search-section {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.search-section input {
+    width: 70%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.search-button {
+    background-color: #42a5f5;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+h2 {
+    border-bottom: 2px solid #42a5f5;
+    padding-bottom: 5px;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+li img {
+    width: 50px;
+    height: 75px;
+    margin-right: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+li div {
+    display: flex;
+    flex-direction: column;
+}
+
+li b {
+    display: block;
+}
+
+li p {
+    margin: 0;
+    color: #757575;
+}
+
+
+/* index page css ends */ 
+
+
+
+
+
+
+
+
+
+
+
+
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+}
+.search-books {
+    margin: 20px 0;
+}
+.book-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.book-item img {
+    width: 50px;
+    height: 75px;
+    margin-right: 10px;
+}
+.user-profile {
+    border-left: 1px solid #ddd;
+    padding-left: 20px;
+}
+.search-display{
+    display: flex;
+    gap:10px;
+    flex-direction: row;
+    position: relative;
+}
+.search-btn{
+display: inline-flex;
+
+}
+.search-box{
+width:40vw;
+position: relative;
+top:10px;
+margin-top: -4px;
+}
+.search-icon{
+position: relative;
+top:2.5px;
+display: flex;
+gap:2px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+.search-result {
+    margin: 20px;
+}
+.search-bar {
+    margin-bottom: 20px;
+}
+.search-bar input {
+    width: calc(100% - 90px);
+    display: inline-block;
+    margin-right: 10px;
+}
+.pagination {
+    justify-content: center;
+}
+.book-item {
+    margin-bottom: 20px;
+}
+.header-buttons {
+    text-align: right;
+}
+
+
+.login-signout {
+   background-color:#28a745 !important ;
+   color: white !important;
+   border:none !important;
+
+}
+
+.login-signout a{
+    color:white;
+}
